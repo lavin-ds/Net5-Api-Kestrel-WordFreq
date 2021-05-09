@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -40,7 +39,7 @@ namespace WordFreqApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Submission>> GetSubmissionById(long id)
         {
-            var existingSub = await _context.Set<Submission>().FindAsync(id);
+            var existingSub = await _context.SubmissionItems.FindAsync(id);
 
             if (existingSub == null)
             {
@@ -116,11 +115,6 @@ namespace WordFreqApi.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
-        }
-
-        private bool SubmissionExists(long id)
-        {
-            return _context.Set<Submission>().Any(e => e.SubmissionId == id);
         }
     }
 }
