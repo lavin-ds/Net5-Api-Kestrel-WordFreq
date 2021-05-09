@@ -21,7 +21,9 @@ namespace WordFreqApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppContext>(opt => opt.UseInMemoryDatabase("WordFreqSubmissions"));
+            services.AddDbContext<AppContext>(opt => opt
+                .UseLazyLoadingProxies()
+                .UseInMemoryDatabase("WordFreqSubmissions"));
 
             // Register the service and implementation for the database context
         	services.AddScoped<IDbContext>(provider => provider.GetService<AppContext >());
