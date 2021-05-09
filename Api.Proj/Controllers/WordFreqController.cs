@@ -68,7 +68,8 @@ namespace WordFreqApi.Controllers
                     Submitter = subToAdd.Submitter
                 };
                 
-            var result = subToAdd.Content.Split(" ")
+            //Case ignored
+            var result = subToAdd.Content.ToLowerInvariant().Split(" ")
                         .GroupBy(x=>x)
                         .Select(x=> new {Word = x.Key, Freq = x.Count()})
                         .OrderByDescending(x=>x.Freq)
