@@ -29,7 +29,7 @@ namespace Api.Test.Controller
         }
 
         [Fact]
-        public async void Test1()
+        public void Test1()
         {
             //Arrange
             var contextMock = new Mock<IDbContext>(MockBehavior.Loose);
