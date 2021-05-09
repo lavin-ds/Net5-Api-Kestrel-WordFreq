@@ -25,11 +25,10 @@ namespace WordFreqApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Submission>>> GetAllSubmissions()
+        public ActionResult<IEnumerable<Submission>> GetAllSubmissions()
         {
-            var result = await _context.SubmissionItems.Include(x=>x.Source).Include(x=>x.ContentFreq).ToListAsync();
-            return result;
-        }
+            return _context.SubmissionItems.ToList();
+        }   
 
         /// <summary>
         /// Returns the submissions for a given Id
