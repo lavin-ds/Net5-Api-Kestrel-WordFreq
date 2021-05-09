@@ -74,13 +74,11 @@ Thumbs.db
 
 #Ignored Folders#
 ############
-.vscode
 obj
 bin
-.vscode/*
+.vscode/solution-explorer
 !.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
+
 !.vscode/extensions.json
 *.code-workspace
 
