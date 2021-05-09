@@ -49,44 +49,6 @@ namespace WordFreqApi.Controllers
 
             return existingSub;
         }
-
-        /// <summary>
-        /// Update existing submission by <paramref name="id"/>
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="subToUpdate"></param>
-        /// <returns></returns>
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateSubmissionById(long id, SubmissionRequestDTO subToUpdate)
-        {
-            var existingSub = await _context.Set<Submission>().FindAsync(id);
-
-            existingSub.Comment = subToUpdate.Comment;
-            existingSub.Content = subToUpdate.Content;
-            existingSub.Submitter = subToUpdate.Submitter;        
-            existingSub.Source.Date = subToUpdate.Source.Date;
-            existingSub.Source.Url = subToUpdate.Source.Url;
-
-            _context.Entry(existingSub).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SubmissionExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
     
         /// <summary>
         /// Add a new submission from the <paramref name="subToAdd"/>
