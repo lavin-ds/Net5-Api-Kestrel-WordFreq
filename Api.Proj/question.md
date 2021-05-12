@@ -62,3 +62,26 @@ Please store this information in an in memory database.
 Please make sure the database can be replaced easily as soon as a different system is available.
 
 Please provide information on how to start the application locally.
+
+
+## Solution Added -
+
+- Language - C#.Net
+- IDE - vsCode
+- Runtime - .Net5.0 Sdk
+
+Download the .Net5.0 Sdk for the type of OS running on your machine from <https://dotnet.microsoft.com/download/dotnet/5.0>.
+To run the app locally in debug mode I have provided the vsCode launch files. An end user can directly clone the app locally.
+The build command via the vscode terminal [ctrl+shft+B] and then hitting [ctrl+F5].
+
+The app will launch at <https://localhost:5001/> or <https://localhost:5000/> depending on the free ports.
+
+I have also included the SwaggerUI for local testing and documentation which can be found at <https://localhost:5001/swagger/index.html>
+
+The application is split into The MVC controller and the EntityFramework InMemory database. I have not added a business logic or repoistory layer.
+
+I have decided to store the original content as a raw string beside the high frequency strings. The other fields are also preserved and nothing is discarded from the original JSON.
+I have created DTO response objects but not mapped them, as they can be done in future iterations using AutoMapper etc. No logging has been added.
+
+The application can be hosted cross platfrom on IIS, APache, Nginx etc.
+
